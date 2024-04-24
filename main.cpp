@@ -46,6 +46,7 @@ void User::addFriends()
 {
     //Checks the file friends/username.txt and saves that list of friends to the vector friends in this class
     string command = "friends/"+userName+".txt";
+    removeDuplicatesFromFile(command);
     ifstream contents(command.c_str(),ios::app);
     string name;
     while (getline(contents, name))
@@ -297,6 +298,7 @@ void User::login() {
   firstName = lines4[1];
   lastName = lines4[2];
   age = stoi(lines4[3]);
+personalityDominant = lines4[5];
   quizDone = true;
 
   // Simulate login delay (optional)
@@ -358,6 +360,7 @@ bool User::checkPassword()
 }
 void User::signUp()
 {
+    quizDone=false;
   // Get user information
   cout << "Enter Your First Name" << endl;
   cin >> firstName;
@@ -649,7 +652,26 @@ string decrypter(string word, int key) {
   }
   return k;
 }
+void removeDuplicatesFromFile(const std::string& filename) {
+    std::ifstream input(filename);
+    std::vector<std::string> lines;
+    std::string line;
 
+    while (std::getline(input, line)) {
+        lines.push_back(line);
+    }
+
+    input.close();
+
+    std::sort(lines.begin(), lines.end());
+    lines.erase(std::unique(lines.begin(), lines.end()), lines.end());
+
+    std::ofstream output(filename);
+
+    for (const auto& uniqueLine : lines) {
+        output << uniqueLine << "\n";
+    }
+}
 class tutorial
 {
     public:
@@ -658,8 +680,8 @@ class tutorial
 void tutorial::startTutorial()
 {
     cout<<"Welcome to the tutorial of Friend Finder"<<endl;
-    //Other instructions
-    //about 50 lines of instructions
+    //Write the whole tutorial here
+    
 }
 // The main function of the program
 int main()
