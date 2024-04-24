@@ -15,6 +15,7 @@ void sleepForMilliseconds(int milliseconds);
 string encrypter(string,int);
 string decrypter(string,int);
 string concat(string a,string b);
+void removeDuplicatesFromFile(const std::string& filename);
 class User
 {
     bool loggedIn;
@@ -103,8 +104,13 @@ void User::chat()
         cout << i<<". ";
         cout << friends[i]<<endl;
     }
+    cout << "Press "<<friends.size()<<" to go back"<<endl;
     int choice;
     cin >> choice;
+    if(choice==friends.size())
+    {
+        return;
+    }
     string command2 = "chats/"+concat(friends[choice],userName)+".txt";
     ifstream contents2(command2.c_str(),ios::app);
     string line;
@@ -550,19 +556,134 @@ void User::dashboard() {
 }
 
 void User::quiz()
-{
+{   int z=1;
+    try{
     int choice;
     //0 means red, 1 means blue, 2 means green, 3 means yellow
     cout << endl<<"You will be shown 4 adjectives, And have to tell which one matches you best"<<endl;
     cout << "Press 1 for the first one, 2 for the second and so on."<<endl;
     clearScreen();//1
-    cout << "Passionate Helpful MindFull Tranquil"<<endl;//2
+    cout << "self-confident  structured  sensitive  trusting"<<endl;//2
     cin>>choice;//3
+    clearScreen();//1
     personality[choice]++;//bas ye kardena//4
+     cout << "spontaneous  checks with others  dreamer  analytical"<<endl;//2
+    cin>>choice;//3
+clearScreen();
+    personality[choice]++;
+     cout << "likes involvement  likes organization  likes being straightforward  likes to explore"<<endl;//2
+    cin>>choice;//3
+clearScreen();
+    personality[choice]++;
+     cout << "stubborn  dictatorial  rebellious  easily offended"<<endl;//2
+    cin>>choice;//3
+clearScreen();
+    personality[choice]++;
+     cout << "demanding  nurturing  persistent  quiet"<<endl;//2
+    cin>>choice;//3
+clearScreen();
+    personality[choice]++;
+     cout << "joiner  likes to brainstorm  resists change  takes charge"<<endl;//2
+    cin>>choice;//3
+clearScreen();
+    personality[choice]++;
+     cout << "cautious  overgenerous  harmonious  energetic"<<endl;//2
+    cin>>choice;//3
+clearScreen();
+    personality[choice]++;
+     cout << "caring/helpful  outspoken  steadfast-behaviour  mild mannered"<<endl;//2
+    cin>>choice;//3
+clearScreen();
+    personality[choice]++;
+     cout << "believable  forceful  disciplined  possessive"<<endl;//2
+    cin>>choice;//3
+clearScreen();
+    personality[choice]++;
+     cout << "daring  idealist  dutiful  playful"<<endl;//2
+    cin>>choice;//3
+clearScreen();
+    personality[choice]++;
+     cout << "logical  contented  friendly  bold/audacious"<<endl;//2
+    cin>>choice;//3
+clearScreen();
+    personality[choice]++;
+     cout << "“eager beaver”  imaginative  accurate/precise  well-liked"<<endl;//2
+    cin>>choice;//3
+clearScreen();
+    personality[choice]++;
+     cout << "reserved  inventive  charismatic  optimistic"<<endl;//2
+    cin>>choice;//3
+clearScreen();
+    personality[choice]++;
+     cout << "authoritative  team-worker  independent  traditional"<<endl;//2
+    cin>>choice;//3
+clearScreen();
+    personality[choice]++;
+     cout << "talkative  restless  conscientious  modest/unassuming"<<endl;//2
+    cin>>choice;//3
+clearScreen();
+    personality[choice]++;
+     cout << "leader  counsellor  designer  controller"<<endl;//2
+    cin>>choice;//3
+clearScreen();
+    personality[choice]++;
+     cout << "meticulous  workaholic  supportive  self-directed"<<endl;//2
+    cin>>choice;//3
+clearScreen();
+    personality[choice]++;
+     cout << "industrious  attentive-to-details mental-imager positive-thinker"<<endl;//2
+    cin>>choice;//3
+clearScreen();
+    personality[choice]++;
+     cout << "task-oriented  people-oriented  idea-oriented  result-oriented"<<endl;//2
+    cin>>choice;//3
+clearScreen();
+    personality[choice]++;
+     cout << "emotional  flexible/adaptable  likes-recognition  particular"<<endl;//2
+    cin>>choice;//3
+clearScreen();
+    personality[choice]++;
+     cout << "irritable  rigid  easily-slighted  easily-threatened"<<endl;//2
+    cin>>choice;//3
+clearScreen();
+    personality[choice]++;
+     cout << "indirect  frank/candid  careful  strict"<<endl;//2
+    cin>>choice;//3
+clearScreen();
+    personality[choice]++;
+     cout << "goal-oriented  capable  volunteers  schedule-oriented"<<endl;//2
+    cin>>choice;//3
+clearScreen();
+    personality[choice]++;
+     cout << "excels-in-crisis  likes-compliments  dry-humour  avoids-causing-attention"<<endl;//2
+    cin>>choice;//3
+clearScreen();
+    personality[choice]++;
+     cout << "likes-watching-people  strong-willed  enthusiastic  sets-very-high-standards"<<endl;//2
+    cin>>choice;//3
+clearScreen();
+    personality[choice]++;
+     cout << "very-self-confident  cautious-in-friends  thorough  dresses-in-trendy-ways"<<endl;//2
+    cin>>choice;//3
+clearScreen();
+    personality[choice]++;
+     cout << "neat-and-tidy  looks-good-on-outside  avoids-conflicts  usually-right"<<endl;//2
+    cin>>choice;//3
+clearScreen();
+    personality[choice]++;
+
+    if(choice!=1||choice!=2||choice!=3||choice!=4){
+        throw z;
+    }
+
     //5
     //Other questions
     //Aur error handling can be added here
     //About 100 lines added from here
+}
+    catch(int z){
+        cout<<"invalid input\nplease enter a valid input"<<endl;
+    }
     clearScreen();
 }
 // Method to select the dominant personality
@@ -680,7 +801,8 @@ class tutorial
 void tutorial::startTutorial()
 {
     cout<<"Welcome to the tutorial of Friend Finder"<<endl;
-    //Write the whole tutorial here
+    //Write the whole tutorial here<
+    cout << "You can sign up or log in"<<endl;
     
 }
 // The main function of the program
